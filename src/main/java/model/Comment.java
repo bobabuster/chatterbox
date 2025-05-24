@@ -38,10 +38,6 @@ public class Comment implements Likable {
         }
     }
 
-    public void delete() {
-        isDeleted = true;
-        content = "[deleted]";
-    }
 
     public boolean isDeleted() {
         return isDeleted();
