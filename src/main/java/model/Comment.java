@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Comment implements Likable {
-    String content;
-    User author;
-    User target;
-    boolean isDeleted;
-    int numLikes;
-    List<Like> likeList;
+    private String content;
+    private User author;
+    private User target;
+    private boolean isDeleted;
+    private int numLikes;
+    private List<Like> likeList;
 
 
     public Comment(String content, User author, User target) {
@@ -22,20 +22,22 @@ public class Comment implements Likable {
     }
 
     public String getContent() {
+        assertNotDeleted();
         return content;
     }
     public int getNumLikes() {
+        assertNotDeleted();
         return numLikes;
     }
 
     public List<Like> getLikeList() {
+        assertNotDeleted();
         return likeList;
     }
 
     public void edit(String newContent) {
-        if (isDeleted) {
-            content = newContent;
-        }
+        assertNotDeleted();
+        content = newContent;
     }
 
 
@@ -45,21 +47,22 @@ public class Comment implements Likable {
 
     @Override
     public void addLike() {
-        if (isDeleted) {
-            throw new IllegalStateException("This comment is already deleted!");
-        }
+        assertNotDeleted();
         numLikes++;
     }
 
     @Override
     public void removeLike() {
-        if (isDeleted) {
-            throw new IllegalStateException("This comment is already deleted!");
-        }
+       assertNotDeleted();
         if (numLikes == 0) {
             throw new IllegalStateException("Can't remove a like from a comment with no likes");
         }
         numLikes--;
+    }
 
+    public void assertNotDeleted() {
+        if (isDeleted()) {
+            throw new IllegalStateException("This comment is already deleted!");
+        }
     }
 }

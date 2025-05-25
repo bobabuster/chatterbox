@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import utils.TestUtils;
 
 import static com.google.common.truth.Truth.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CommentTest {
     @Test
@@ -16,6 +17,9 @@ public class CommentTest {
         assertThat(comment.getContent()).isEqualTo("I love cookies");
         assertThat(comment.getNumLikes()).isEqualTo(0);
         assertThat(comment.getLikeList()).isEmpty();
-
     }
+
+
+
+
 }
