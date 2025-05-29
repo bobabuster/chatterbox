@@ -6,7 +6,6 @@ enum Status {
     PENDING,
     ACCEPTED,
     REJECTED,
-    BLOCKED
 }
 public class Friendship {
     private User user1;
@@ -37,9 +36,6 @@ public class Friendship {
         status = Status.REJECTED;
     }
 
-    public void block() {
-        status = Status.BLOCKED;
-    }
 
 
     public void assertPending() {

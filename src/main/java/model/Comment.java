@@ -3,22 +3,41 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+
+@Entity
 public class Comment implements Likable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-increment id
+    private long id;
+
     private String content;
     private User author;
-    private User target;
+    private Post target;
     private boolean isDeleted;
     private int numLikes;
     private List<Like> likeList;
 
 
-    public Comment(String content, User author, User target) {
+    public Comment(String content, User author, Post target) {
         this.content = content;
         this.author = author;
         this.target = target;
         isDeleted = false;
         numLikes = 0;
         likeList = new ArrayList<>();
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public Post getTarget() {
+        return target;
     }
 
     public String getContent() {
@@ -28,6 +47,10 @@ public class Comment implements Likable {
     public int getNumLikes() {
         assertNotDeleted();
         return numLikes;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public List<Like> getLikeList() {

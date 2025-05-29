@@ -14,6 +14,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.1.4</version> <!-- Use the latest stable version -->
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
     <dependencies>
         <!-- JUnit Jupiter API and Engine for testing -->
         <dependency>
@@ -31,8 +38,31 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Spring Boot Starter Web: for building REST APIs and web apps -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>3.5.0</version>
+        </dependency>
+
+        <!-- Optional: Spring Boot Starter Data JPA (includes Hibernate) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <!-- Optional: Database driver, e.g., H2 in-memory database -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>2.2.220</version>
+            <scope>runtime</scope>
+        </dependency>
+
 
     </dependencies>
+
+
 
     <build>
         <plugins>

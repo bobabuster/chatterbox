@@ -1,5 +1,6 @@
 package unit;
 
+import model.Post;
 import model.User;
 import org.junit.jupiter.api.Test;
 import utils.TestUtils;
@@ -11,8 +12,8 @@ public class CommentTest {
     @Test
     public void getterTest() {
         User user1 = TestUtils.createUser1();
-        User user2 = TestUtils.createUser2();
-        model.Comment comment = new model.Comment("I love cookies", user1, user2);
+        Post post = new Post("Hola");
+        model.Comment comment = new model.Comment("I love cookies", user1, post);
 
         assertThat(comment.getContent()).isEqualTo("I love cookies");
         assertThat(comment.getNumLikes()).isEqualTo(0);
