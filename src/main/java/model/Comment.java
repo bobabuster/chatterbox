@@ -88,4 +88,8 @@ public class Comment implements Likable {
             throw new IllegalStateException("This comment is already deleted!");
         }
     }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 }

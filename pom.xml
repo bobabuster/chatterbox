@@ -22,6 +22,21 @@
     </parent>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>5.5.0</version>  <!-- Use latest stable version -->
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>5.5.0</version> <!-- keep the same version as mockito-core -->
+            <scope>test</scope>
+        </dependency>
+
         <!-- JUnit Jupiter API and Engine for testing -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>

@@ -32,10 +32,10 @@ public class CommentManager {
         }
     }
 
-    public void updateComment(long id, String newContent) {
+    public Comment updateComment(long id, String newContent) {
         Comment c = getComment(id);
         c.edit(newContent);
-        repo.save(c);
+        return repo.save(c);
     }
 
 

@@ -1,6 +1,7 @@
 package unit;
 
 import static com.google.common.truth.Truth.assertThat;
+
 import model.User;
 import org.junit.jupiter.api.Test;
 import utils.TestUtils;
