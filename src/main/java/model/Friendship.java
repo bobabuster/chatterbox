@@ -1,18 +1,21 @@
 package model;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import java.util.Set;
 
-enum Status {
-    PENDING,
-    ACCEPTED,
-    REJECTED,
-}
 public class Friendship {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-increment id
+    private long id;
+
     private User user1;
     private User user2;
     private Status status;
 
-    public void Friendship(User user1, User user2) {
+    public Friendship(User user1, User user2) {
         this.user1 = user1;
         this.user2 = user2;
         status = Status.PENDING;
@@ -36,10 +39,21 @@ public class Friendship {
         status = Status.REJECTED;
     }
 
+    public void removeFriendship() {
+        assertAccepted();
+        status = Status.REMOVED;
+    }
+
 
 
     public void assertPending() {
         if (status != Status.PENDING) {
+            throw new IllegalStateException("This friendship is not pending");
+        }
+    }
+
+    public void assertAccepted() {
+        if (status != Status.ACCEPTED) {
             throw new IllegalStateException("This friendship is not pending");
         }
     }
