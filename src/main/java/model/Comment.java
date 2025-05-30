@@ -65,7 +65,7 @@ public class Comment implements Likable {
 
 
     public boolean isDeleted() {
-        return isDeleted();
+        return isDeleted;
     }
 
     @Override

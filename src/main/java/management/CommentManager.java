@@ -1,5 +1,6 @@
 package management;
 
+import jakarta.persistence.EntityNotFoundException;
 import model.*;
 import org.springframework.stereotype.Service;
 import repository.CommentRepository;
@@ -22,14 +23,28 @@ public class CommentManager {
         return repo.save(comment);
     }
 
-    public Comment getComment(String content, User user, Post target) {
-        return null;
+    public Comment getComment(long id) {
+        Optional<Comment> opt = repo.findById(id);
+        if (!opt.isPresent()) {
+            throw new EntityNotFoundException("Comment with id " + id + " not found");
+        } else {
+            return opt.get();
+        }
+    }
+
+    public void updateComment(long id, String newContent) {
+        Comment c = getComment(id);
+        c.edit(newContent);
+        repo.save(c);
     }
 
 
-
-    public Comment deleteComment() {
-        return null;
+    public void deleteComment(long id) {
+        if (!repo.existsById(id)) {
+            throw new EntityNotFoundException("Comment with id " + id + " not found");
+        } else {
+            repo.deleteById(id);
+        }
     }
 
 
