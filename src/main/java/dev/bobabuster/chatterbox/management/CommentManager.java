@@ -6,6 +6,7 @@ import dev.bobabuster.chatterbox.model.User;
 import dev.bobabuster.chatterbox.repository.PostRepository;
 import dev.bobabuster.chatterbox.repository.UserRepository;
 import dev.bobabuster.chatterbox.utils.EntityUtils;
+import jakarta.persistence.Entity;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import dev.bobabuster.chatterbox.repository.CommentRepository;
@@ -30,6 +31,7 @@ public class CommentManager {
 
     public Comment createComment(String content, User user, Post target) {
         EntityUtils.saveOrGetExisting(user, userRepo);
+        EntityUtils.saveOrGetExisting(target.getAuthor(), userRepo);
         EntityUtils.saveOrGetExisting(target, postRepo);
         Comment comment = new Comment(content, user, target);
         return commentRepo.save(comment);
