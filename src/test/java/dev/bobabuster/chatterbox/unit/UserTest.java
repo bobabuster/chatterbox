@@ -34,9 +34,6 @@ public class UserTest {
         user.changePassword("hoy");
         assertThat(user.getPassword()).isEqualTo("hoy");
 
-        user.changeUsername("jane");
-        assertThat(user.getUsername()).isEqualTo(("jane"));
-
         user.changeRealName("Jane Doe");
         assertThat(user.getRealName()).isEqualTo("Jane Doe");
     }

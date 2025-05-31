@@ -8,7 +8,6 @@ import dev.bobabuster.chatterbox.repository.PostRepository;
 import dev.bobabuster.chatterbox.repository.UserRepository;
 import dev.bobabuster.chatterbox.utils.TestUtils;
 import jakarta.transaction.Transactional;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,6 +15,7 @@ import dev.bobabuster.chatterbox.repository.CommentRepository;
 import static com.google.common.truth.Truth.assertThat;
 
 @SpringBootTest
+@Transactional
 public class CommentManagerTest {
     @Autowired
     private CommentRepository commentRepo;
@@ -26,17 +26,8 @@ public class CommentManagerTest {
     @Autowired
     private PostRepository postRepo;
 
+    @Autowired
     private CommentManager manager;
-
-    @BeforeEach
-    @Transactional
-    public void setUp() {
-        commentRepo.deleteAll();
-        postRepo.deleteAll();
-        userRepo.deleteAll();
-
-        manager = new CommentManager(commentRepo, userRepo, postRepo);
-    }
 
     @Test
     public void basic() {

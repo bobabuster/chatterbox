@@ -14,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static com.google.common.truth.Truth.assertThat;
 
 @SpringBootTest
+@Transactional
 public class PostManagerTest {
 
     @Autowired
@@ -24,15 +25,6 @@ public class PostManagerTest {
 
     @Autowired
     private PostManager manager;
-
-    @BeforeEach
-    @Transactional
-    public void setUp() {
-        postRepo.deleteAll();
-        userRepo.deleteAll();
-
-        manager = new PostManager(postRepo, userRepo);
-    }
 
     @Test
     public void basic() {

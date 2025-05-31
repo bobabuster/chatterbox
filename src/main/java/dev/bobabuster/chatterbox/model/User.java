@@ -49,10 +49,6 @@ public class User implements Identifiable{
     }
     public Long getId() { return id; }
 
-    public void changeUsername(String newUsername) {
-        this.username = newUsername;
-    }
-
     public void changePassword(String newPassword) {
         this.password = newPassword;
     }
