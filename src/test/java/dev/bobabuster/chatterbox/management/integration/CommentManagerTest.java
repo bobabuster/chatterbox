@@ -43,5 +43,21 @@ public class CommentManagerTest {
         assertThat(c.getTarget()).isEqualTo(p);
         assertThat(c.getContent()).isEqualTo("hello");
         assertThat(c.getAuthor()).isEqualTo(u);
+
+        Comment c2 = manager.getComment(c.getId());
+        assertThat(c2.getContent()).isEqualTo("hello");
+        assertThat(c2.getAuthor().equals(u)).isTrue();
+        assertThat(c2.getTarget().equals(p)).isTrue();
+
+        manager.updateComment(c2.getId(), "I am updated!");
+        Comment c3 = manager.getComment(c2.getId());
+        assertThat(c3.getContent()).isEqualTo("I am updated!");
+        assertThat(c3.getAuthor().equals(u)).isTrue();
+        assertThat(c3.getTarget().equals(p)).isTrue();
+
+        manager.deleteComment(c3.getId());
+        assertThat(commentRepo.existsById(c3.getId())).isFalse();
     }
+
+
 }

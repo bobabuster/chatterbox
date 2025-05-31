@@ -2,6 +2,8 @@ package dev.bobabuster.chatterbox.model;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 public class Comment implements Likable, Identifiable<Long> {
 
@@ -21,7 +23,7 @@ public class Comment implements Likable, Identifiable<Long> {
     private boolean isDeleted;
     private int numLikes;
 
-
+    protected Comment() {}
 
     public Comment(String content, User author, Post target) {
         this.content = content;
@@ -85,5 +87,22 @@ public class Comment implements Likable, Identifiable<Long> {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Comment)) {
+            return false;
+        }
+
+        Comment other = (Comment) o;
+        return id == other.id;
+    }
+
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }

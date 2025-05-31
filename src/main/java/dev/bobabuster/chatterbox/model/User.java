@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Objects;
 
 
 @Entity
@@ -17,6 +18,8 @@ public class User implements Identifiable{
     private String password;
     private String realName;
     private LocalDate dob;
+
+    protected User() {}
 
     public User(String username, String password, String realName, String dob) {
         this.username = username;
@@ -66,6 +69,24 @@ public class User implements Identifiable{
             throw new IllegalArgumentException("Date must be valid and in MM/DD/YYYY format.");
         }
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) {
+            return false;
+        }
+
+        User other = (User) o;
+        return id == other.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
+
+
 
     public <T extends Likable> void like(T target) {
         target.addLike();

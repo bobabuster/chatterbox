@@ -19,6 +19,8 @@ public class Friendship implements Identifiable<Long> {
     private User user2;
     private Status status;
 
+    protected Friendship() {}
+
     public Friendship(User user1, User user2) {
         this.user1 = user1;
         this.user2 = user2;

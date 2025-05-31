@@ -2,6 +2,8 @@ package dev.bobabuster.chatterbox.model;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 public class Post implements Likable, Identifiable {
 
@@ -15,6 +17,8 @@ public class Post implements Likable, Identifiable {
     @ManyToOne
     @JoinColumn(name = "user_id")  // the foreign key column in the Post table
     private User author;
+
+    protected Post() {}
     public Post(String content, User author) {
         this.content = content;
         numLikes = 0;
@@ -51,5 +55,21 @@ public class Post implements Likable, Identifiable {
     @Override
     public Long getId() {
         return id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Post)) {
+            return false;
+        }
+
+        Post other = (Post) o;
+        return id == other.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }

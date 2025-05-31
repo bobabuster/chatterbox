@@ -8,6 +8,7 @@ import dev.bobabuster.chatterbox.repository.UserRepository;
 import dev.bobabuster.chatterbox.utils.EntityUtils;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import dev.bobabuster.chatterbox.repository.CommentRepository;
 
@@ -46,6 +47,7 @@ public class CommentManager {
         }
     }
 
+    @Transactional
     public Comment updateComment(long id, String newContent) {
         Comment c = getComment(id);
         c.edit(newContent);
