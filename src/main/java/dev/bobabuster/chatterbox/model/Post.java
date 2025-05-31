@@ -3,7 +3,7 @@ package dev.bobabuster.chatterbox.model;
 import jakarta.persistence.*;
 
 @Entity
-public class Post implements Likable {
+public class Post implements Likable, Identifiable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-increment id
@@ -46,5 +46,10 @@ public class Post implements Likable {
             throw new IllegalStateException("Can't remove a like from a comment with no likes");
         }
         numLikes--;
+    }
+
+    @Override
+    public Long getId() {
+        return id;
     }
 }

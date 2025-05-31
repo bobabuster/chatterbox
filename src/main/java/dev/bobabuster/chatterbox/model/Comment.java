@@ -3,7 +3,7 @@ package dev.bobabuster.chatterbox.model;
 import jakarta.persistence.*;
 
 @Entity
-public class Comment implements Likable {
+public class Comment implements Likable, Identifiable<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-increment id
@@ -48,7 +48,7 @@ public class Comment implements Likable {
         return numLikes;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

@@ -7,7 +7,7 @@ import java.time.format.DateTimeParseException;
 
 
 @Entity
-public class User {
+public class User implements Identifiable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-increment id

@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity
-public class Friendship {
+public class Friendship implements Identifiable<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-increment id
     private long id;
@@ -62,4 +62,8 @@ public class Friendship {
         }
     }
 
+    @Override
+    public Long getId() {
+        return id;
+    }
 }
