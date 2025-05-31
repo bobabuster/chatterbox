@@ -1,14 +1,16 @@
-package management.unit;
+package dev.bobabuster.chatterbox.management.unit;
 
-import management.CommentManager;
-import model.*;
+import dev.bobabuster.chatterbox.management.CommentManager;
+import dev.bobabuster.chatterbox.model.Comment;
+import dev.bobabuster.chatterbox.model.Post;
+import dev.bobabuster.chatterbox.model.User;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import repository.CommentRepository;
-import utils.TestUtils;
+import dev.bobabuster.chatterbox.repository.CommentRepository;
+import dev.bobabuster.chatterbox.utils.TestUtils;
 
 import java.util.Optional;
 

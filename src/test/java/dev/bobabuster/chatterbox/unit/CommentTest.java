@@ -1,10 +1,10 @@
-package unit;
+package dev.bobabuster.chatterbox.unit;
 
-import model.Comment;
-import model.Post;
-import model.User;
+import dev.bobabuster.chatterbox.model.Comment;
+import dev.bobabuster.chatterbox.model.Post;
+import dev.bobabuster.chatterbox.model.User;
+import dev.bobabuster.chatterbox.utils.TestUtils;
 import org.junit.jupiter.api.Test;
-import utils.TestUtils;
 
 import static com.google.common.truth.Truth.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -18,7 +18,6 @@ public class CommentTest {
 
         assertThat(comment.getContent()).isEqualTo("I love cookies");
         assertThat(comment.getNumLikes()).isEqualTo(0);
-        assertThat(comment.getLikeList()).isEmpty();
     }
 
 

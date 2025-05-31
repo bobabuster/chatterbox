@@ -1,4 +1,4 @@
-package model;
+package dev.bobabuster.chatterbox.model;
 
 public class Like<T extends Likable> {
     private User user;

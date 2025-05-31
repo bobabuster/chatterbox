@@ -1,17 +1,21 @@
-package model;
+package dev.bobabuster.chatterbox.model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Set;
 
+@Entity
 public class Friendship {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-increment id
     private long id;
 
+    @ManyToOne
+    @JoinColumn(name = "user1_id")
     private User user1;
+
+    @ManyToOne
+    @JoinColumn(name = "user2_id")
     private User user2;
     private Status status;
 

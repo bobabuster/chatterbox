@@ -1,9 +1,6 @@
-package model;
+package dev.bobabuster.chatterbox.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
 
 @Entity
 public class Post implements Likable {
@@ -13,6 +10,10 @@ public class Post implements Likable {
     private long id;
     private String content;
     private int numLikes;
+
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")  // the foreign key column in the Post table
     private User author;
     public Post(String content, User author) {
         this.content = content;
@@ -31,6 +32,8 @@ public class Post implements Likable {
     public String getContent() {
         return content;
     }
+    public User getAuthor() { return author;
+    }
 
     @Override
     public void addLike() {
@@ -42,5 +45,6 @@ public class Post implements Likable {
         if (numLikes == 0) {
             throw new IllegalStateException("Can't remove a like from a comment with no likes");
         }
+        numLikes--;
     }
 }

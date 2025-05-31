@@ -1,10 +1,10 @@
-package unit;
+package dev.bobabuster.chatterbox.unit;
 
 import static com.google.common.truth.Truth.assertThat;
 
-import model.User;
+import dev.bobabuster.chatterbox.model.User;
 import org.junit.jupiter.api.Test;
-import utils.TestUtils;
+import dev.bobabuster.chatterbox.utils.TestUtils;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

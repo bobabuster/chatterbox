@@ -1,10 +1,18 @@
-package model;
+package dev.bobabuster.chatterbox.model;
 
+import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+
+@Entity
 public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-increment id
+    private long id;
+
     private String username;
     private String password;
     private String realName;
@@ -36,6 +44,7 @@ public class User {
     public String getdob() {
         return dob.format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
     }
+    public Long getId() { return id; }
 
     public void changeUsername(String newUsername) {
         this.username = newUsername;

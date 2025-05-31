@@ -1,10 +1,10 @@
-package management;
+package dev.bobabuster.chatterbox.management;
 
+import dev.bobabuster.chatterbox.model.Post;
+import dev.bobabuster.chatterbox.model.User;
 import jakarta.persistence.EntityNotFoundException;
-import model.*;
 import org.springframework.stereotype.Service;
-import repository.CommentRepository;
-import repository.PostRepository;
+import dev.bobabuster.chatterbox.repository.PostRepository;
 
 import java.util.Optional;
 

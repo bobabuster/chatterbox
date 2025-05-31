@@ -1,6 +1,9 @@
-package utils;
+package dev.bobabuster.chatterbox.utils;
 
-import model.*;
+import dev.bobabuster.chatterbox.model.Comment;
+import dev.bobabuster.chatterbox.model.Post;
+import dev.bobabuster.chatterbox.model.User;
+
 public class TestUtils {
     public static User createUser1() {
         return new User("jDoe", "hola", "John Doe", "01/01/2000");

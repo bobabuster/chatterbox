@@ -1,12 +1,6 @@
-package model;
+package dev.bobabuster.chatterbox.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
 
 @Entity
 public class Comment implements Likable {
@@ -16,11 +10,17 @@ public class Comment implements Likable {
     private long id;
 
     private String content;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User author;
+
+    @ManyToOne
+    @JoinColumn(name = "post_id")  // foreign key column in Comment table
     private Post target;
     private boolean isDeleted;
     private int numLikes;
-    private List<Like> likeList;
+
 
 
     public Comment(String content, User author, Post target) {
@@ -29,7 +29,6 @@ public class Comment implements Likable {
         this.target = target;
         isDeleted = false;
         numLikes = 0;
-        likeList = new ArrayList<>();
     }
 
     public User getAuthor() {
@@ -51,11 +50,6 @@ public class Comment implements Likable {
 
     public long getId() {
         return id;
-    }
-
-    public List<Like> getLikeList() {
-        assertNotDeleted();
-        return likeList;
     }
 
     public void edit(String newContent) {

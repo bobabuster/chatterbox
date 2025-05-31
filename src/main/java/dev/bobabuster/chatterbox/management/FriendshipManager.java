@@ -1,13 +1,12 @@
-package management;
+package dev.bobabuster.chatterbox.management;
 
+import dev.bobabuster.chatterbox.model.Friendship;
 import jakarta.persistence.EntityNotFoundException;
-import model.Comment;
-import model.Friendship;
-import model.User;
-import model.Status;
+import dev.bobabuster.chatterbox.model.User;
+import dev.bobabuster.chatterbox.model.Status;
 
 import org.springframework.stereotype.Service;
-import repository.FriendshipRepository;
+import dev.bobabuster.chatterbox.repository.FriendshipRepository;
 
 import java.util.Optional;
 
